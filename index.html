@@ -316,7 +316,8 @@
       const canAct = state.inBattle && !state.turnLocked;
       ui.attackBtn.disabled = !canAct;
       ui.skillBtn.disabled = !canAct || hero.mp < 4;
-      ui.itemBtn.disabled = !canAct || hero.inventory[ui.itemSelect.value] <= 0;
+      const selectedItem = ui.itemSelect.value;
+      ui.itemBtn.disabled = !canAct || !selectedItem || (hero.inventory[selectedItem] || 0) <= 0;
       ui.runBtn.disabled = !canAct;
     }
 
